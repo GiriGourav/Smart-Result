@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>View Result - SmartResult</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 min-h-screen flex flex-col items-center justify-center px-4">
+
+<!-- Heading -->
+<h1 class="text-3xl md:text-4xl font-bold text-blue-700 mb-8 text-center">
+    Check Your Result
+</h1>
+
+<!-- Form Section -->
+<div class="w-full max-w-md bg-white p-6 rounded-lg shadow-md">
+    <label for="rollNumber" class="block text-sm font-medium text-gray-700 mb-2">
+        Enter Roll Number
+    </label>
+    <input
+            type="text"
+            id="rollNumber"
+            class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none"
+            placeholder="e.g., 20230101"
+    />
+
+    <button
+            onclick="getResult()"
+            class="mt-4 w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition"
+    >
+        Get Result
+    </button>
+</div>
+
+<!-- Result Section -->
+<div id="resultSection" class="w-full max-w-2xl mt-10 hidden bg-white p-6 rounded-lg shadow-md">
+    <h2 class="text-xl font-semibold text-gray-800 mb-4">Student Result</h2>
+    <div class="grid grid-cols-2 gap-4 text-gray-700">
+        <p><span class="font-medium">Name:</span> <span id="studentName">-</span></p>
+        <p><span class="font-medium">Roll No:</span> <span id="studentRoll">-</span></p>
+        <p><span class="font-medium">Class:</span> <span id="studentClass">-</span></p>
+        <p><span class="font-medium">Total Marks:</span> <span id="studentTotal">-</span></p>
+        <p><span class="font-medium">Percentage:</span> <span id="studentPercent">-</span></p>
+        <p><span class="font-medium">Grade:</span> <span id="studentGrade">-</span></p>
+    </div>
+</div>
+
+<!-- Script to simulate result lookup -->
+<script>
+    function getResult() {
+      const roll = document.getElementById("rollNumber").value.trim();
+
+      // Dummy data (replace with actual backend call)
+<!--      const dummyData = {-->
+<!--        "20230101": {-->
+<!--          name: "Rahul Verma",-->
+<!--          roll: "20230101",-->
+<!--          class: "10th Grade",-->
+<!--          total: "472 / 500",-->
+<!--          percent: "94.4%",-->
+<!--          grade: "A+"-->
+<!--        },-->
+<!--        "20230102": {-->
+<!--          name: "Sneha Patel",-->
+<!--          roll: "20230102",-->
+<!--          class: "10th Grade",-->
+<!--          total: "445 / 500",-->
+<!--          percent: "89%",-->
+<!--          grade: "A"-->
+<!--        }-->
+<!--      };-->
+
+      const data = dummyData[roll];
+
+      if (data) {
+        document.getElementById("studentName").textContent = data.name;
+        document.getElementById("studentRoll").textContent = data.roll;
+        document.getElementById("studentClass").textContent = data.class;
+        document.getElementById("studentTotal").textContent = data.total;
+        document.getElementById("studentPercent").textContent = data.percent;
+        document.getElementById("studentGrade").textContent = data.grade;
+        document.getElementById("resultSection").classList.remove("hidden");
+      } else {
+        alert("No result found for this Roll Number.");
+        document.getElementById("resultSection").classList.add("hidden");
+      }
+    }
+</script>
+</body>
+</html>

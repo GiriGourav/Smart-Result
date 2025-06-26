@@ -8,7 +8,7 @@ public class SmartResultApplication {
 
 	public static void main(String[] args) {
 
-		SpringApplication.run(SmartResultApplication.class, args);
+		  SpringApplication.run(SmartResultApplication.class, args);
 	}
 
 }

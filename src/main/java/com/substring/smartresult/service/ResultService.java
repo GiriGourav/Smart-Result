@@ -49,4 +49,9 @@ public class ResultService {
 
         return savedStudent.getId();
     }
+
+    public Student getResultByRollNumber(String rollNumber)
+    {
+        return studentRepo.findByRollNumber(rollNumber);
+    }
 }

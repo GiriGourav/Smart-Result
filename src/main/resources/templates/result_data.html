@@ -55,7 +55,7 @@
         <div class="grid md:grid-cols-2 gap-6 text-gray-700">
             <div><strong>Total Marks:</strong> <span th:text="${totalMarks}"></span> / <span th:text="${totalMaxMarks}"></span></div>
             <div><strong>Percentage:</strong> <span th:text="${percentage}"></span>%</div>
-            <div><strong>Overall Grade:</strong> <span th:text="${totalGrade}"></span></div>
+            <div><strong>Overall Grade:</strong> <span th:class="${totalGrade=='F'} ? 'text-red-700': 'text-green-700'" class="font-bold text-4xl" th:text="${totalGrade}"></span></div>
             <div><strong>Feedback:</strong> Keep up the excellent work! You're doing great!</div>
         </div>
     </div>

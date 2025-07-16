@@ -67,11 +67,11 @@
         <!-- Marks Section -->
         <div>
             <h3 class="text-xl font-semibold text-gray-700 mb-4">Subject Marks</h3>
-            <div class="space-y-6">
+            <div class="space-y-6 mark_fields_container" id="mark_fields_container">
                 <!-- Repeat this block for 5 subjects -->
 
 
-                <div class="grid md:grid-cols-6 gap-4">
+                <div class="grid md:grid-cols-7 gap-4" id="mark_fields_0">
                     <input
                             name="marks[0].subject" type="text" placeholder="Subject"
                             class="col-span-2 border rounded-xl px-3 py-2" required>
@@ -84,10 +84,12 @@
                            required>
                     <input name="marks[0].remark" type="text" placeholder="Remark" class="border rounded-xl px-3 py-2"
                            required>
+                    <button disabled type="button" class="text-white disabled:bg-gray-700 bg-red-700 px-3 py-2 rounded">Remove</button>
+
                 </div>
 
 
-                <div class="grid md:grid-cols-6 gap-4">
+                <div class="grid md:grid-cols-7 gap-4" id="mark_fields_1">
                     <input
                             name="marks[1].subject" type="text" placeholder="Subject"
                             class="col-span-2 border rounded-xl px-3 py-2" required>
@@ -100,9 +102,14 @@
                            required>
                     <input name="marks[1].remark" type="text" placeholder="Remark" class="border rounded-xl px-3 py-2"
                            required>
+                    <button disabled type="button" class="text-white disabled:bg-gray-700 bg-red-700 px-3 py-2 rounded">Remove</button>
+
                 </div>
 
 
+            </div>
+            <div class="flex justify-center item center my-5">
+                <button onclick="addRow()" type="button" class="text-white bg-orange-700 px-3 py-2 rounded">Add Subject Mark</button>
             </div>
         </div>
 
@@ -115,6 +122,42 @@
         </div>
     </form>
 </div>
+<script>
 
+    let index=2;
+
+    function addRow(){
+        console.log("Adding new Row");
+
+        const container=document.getElementById("mark_fields_container");
+        container.innerHTML = container.innerHTML + `
+        <div class="grid md:grid-cols-7 gap-4" id="mark_fields_${index}">
+                    <input
+                            name="marks[${index}].subject" type="text" placeholder="Subject"
+                            class="col-span-2 border rounded-xl px-3 py-2" required>
+
+                    <input name="marks[${index}].marks" type="number" placeholder="Marks" class="border rounded-xl px-3 py-2"
+                           required>
+                    <input name="marks[${index}].maxMarks" type="number" placeholder="Max Marks"
+                           class="border rounded-xl px-3 py-2" required>
+                    <input name="marks[${index}].grade" type="text" placeholder="Grade" class="border rounded-xl px-3 py-2"
+                           required>
+                    <input name="marks[${index}].remark" type="text" placeholder="Remark" class="border rounded-xl px-3 py-2"
+                           required>
+                    <button onclick="removeRow('mark_fields_${index}')" id="buttonId" type="button" class="text-white bg-red-700 px-3 py-2 rounded">Remove</button>
+
+                </div>
+        `
+        index++;
+    }
+
+
+    function removeRow(divId)
+    {
+         const div=document.getElementById(divId);
+        div.parentNode.removeChild(div);
+        index--;
+    }
+</script>
 </body>
 </html>

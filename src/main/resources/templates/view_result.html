@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>View Result - SmartResult</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-blue-50 min-h-screen flex items-center justify-center px-4">
+
+<div class="bg-white shadow-lg rounded-2xl w-full max-w-md p-8">
+    <!-- Heading -->
+    <h2 class="text-2xl font-bold text-center text-blue-800 mb-6">View Your Result</h2>
+
+    <!-- Form -->
+    <form th:action="@{'/results/view-result'}"  method="post" id="resultForm" class="space-y-4">
+        <div>
+            <label for="rollNumber" class="block text-gray-700 font-medium mb-1">Enter Roll Number</label>
+
+            <!--           enter roll number wali input field-->
+            <input
+                    name="rollNumber"
+                    type="text"
+                    id="rollNumber"
+                    placeholder="e.g. 123456"
+                    class="w-full border border-gray-300 rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    required
+            />
+            <label for="dob" class="block text-gray-700 font-medium mb-1">
+                Enter Password
+            </label>
+
+            <input
+                    name="dob"
+            type="date"
+            id="dob"
+            class="w-full border border-gray-300 rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            required
+            />
+
+        </div>
+        <button
+                type="submit"
+                class="w-full bg-blue-600 text-white py-2 rounded-xl hover:bg-blue-700 transition text-lg"
+        >
+            Get Result
+        </button>
+    </form>
+
+
+</div>
+
+<script>
+
+</script>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SmartResult</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+<body class="bg-white text-gray-900">
+<!-- Header/Navbar -->
+<header class="bg-white shadow-md">
+  <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+
+    <!-- Brand Name -->
+    <a href="#" class="text-2xl font-bold text-blue-700">SmartResult</a>
+
+    <!-- Desktop Navigation -->
+    <nav class="hidden md:flex space-x-6 text-sm font-medium">
+      <a href="#" class="text-gray-700 hover:text-blue-700">Home</a>
+      <a th:href="@{'/results/input'}" href="#view" class="text-gray-700 hover:text-blue-700">View Result</a>
+      <a th:href="@{'/results/add'}" href="#add" class="text-gray-700 hover:text-blue-700">Add Result</a>
+      <a href="#contact" class="text-gray-700 hover:text-blue-700">Contact</a>
+      <a href="#about" class="text-gray-700 hover:text-blue-700">About</a>
+    </nav>
+
+    <!-- Mobile Menu Button -->
+    <button id="menu-btn" class="md:hidden text-gray-700 focus:outline-none">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mobile Navigation Menu -->
+  <div id="mobile-menu" class="md:hidden hidden px-4 pb-4">
+    <a href="#" class="block py-2 text-gray-700 hover:text-blue-700">Home</a>
+    <a href="#view" class="block py-2 text-gray-700 hover:text-blue-700">View Result</a>
+    <a href="#add" class="block py-2 text-gray-700 hover:text-blue-700">Add Result</a>
+    <a href="#contact" class="block py-2 text-gray-700 hover:text-blue-700">Contact</a>
+    <a href="#about" class="block py-2 text-gray-700 hover:text-blue-700">About</a>
+  </div>
+</header>
+
+<!-- Hero Section -->
+<section class="text-center py-16 px-4">
+  <h1 class="text-3xl md:text-4xl font-bold text-blue-700 mb-4">Welcome to SmartResult</h1>
+  <p class="text-gray-600 text-base md:text-lg mb-6 max-w-2xl mx-auto">
+    The easiest way for students to access and understand their academic results online.
+    Fast. Accurate. Hassle-free.
+  </p>
+  <a href="http://localhost:8080/results/input" class="bg-blue-600 hover:bg-blue-700 text-white font-medium px-6 py-2 rounded-full text-sm transition">Check Your Result</a>
+</section>
+
+<!-- Features Section -->
+<section class="py-12 bg-gray-50 px-4" id="features">
+  <h2 class="text-2xl font-semibold text-center text-gray-800 mb-10">Why SmartResult?</h2>
+  <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-6 text-center">
+    <div class="bg-blue p-6 rounded-xl shadow">
+      <div class="text-green-500 mb-2 text-2xl">✔️</div>
+      <h3 class="font-semibold text-lg mb-1">Instant Access</h3>
+      <p class="text-sm text-gray-600">Students can view their results as soon as they're published — no waiting, no hassle.</p>
+    </div>
+    <div class="bg-blue p-6 rounded-xl shadow">
+      <div class="text-green-500 mb-2 text-2xl">✔️</div>
+      <h3 class="font-semibold text-lg mb-1">User Friendly</h3>
+      <p class="text-sm text-gray-600">Clean interface designed for simplicity. Easily navigate, search, and understand your performance.</p>
+    </div>
+    <div class="bg-blue p-6 rounded-xl shadow">
+      <div class="text-green-500 mb-2 text-2xl">✔️</div>
+      <h3 class="font-semibold text-lg mb-1">Secure & Reliable</h3>
+      <p class="text-sm text-gray-600">Your academic data is kept secure with modern standards and encryption.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<section id="check" class="py-12 bg-blue-50 text-center px-4">
+  <h2 class="text-xl font-semibold text-blue-700 mb-2">Ready to Check Your Result?</h2>
+  <p class="text-sm text-gray-700 mb-5">Get your academic performance instantly. Start now with SmartResult.</p>
+  <a href="http://localhost:8080/results/input" class="bg-blue-600 hover:bg-blue-700 text-white font-medium px-6 py-2 rounded-full text-sm transition">Check Now</a>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="py-12 px-4 text-center bg-white">
+  <h2 class="text-xl font-semibold text-blue-700 mb-2">Contact Us</h2>
+  <p class="text-sm text-gray-600 mb-5">Have questions or need support? Reach out to us anytime.</p>
+  <div class="text-sm text-gray-700 space-y-2">
+    <div><span class="font-medium">📧</span> support@smartresult.com</div>
+    <div><span class="font-medium">📞</span> +1 (123) 456-7890</div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="text-center bg-gray-900 text-white py-4 text-xs">
+  <p>&copy; <span id="year"></span> SmartResult. All rights reserved.</p>
+</footer>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+<script>
+  const menuBtn = document.getElementById('menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  menuBtn.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+  });
+</script>
+
+</body>
+</html>
+

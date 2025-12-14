@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Student Marksheet - SmartResult</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 py-10 px-4">
+
+<div class="max-w-4xl mx-auto bg-white shadow-xl rounded-2xl p-8">
+    <!-- Title -->
+    <div class="text-center mb-6">
+        <h1 class="text-3xl font-bold text-blue-800">Student Marksheet</h1>
+        <p class="text-gray-600">Academic Performance Summary</p>
+    </div>
+
+    <!-- Student Info -->
+    <div class="grid md:grid-cols-2 gap-6 text-sm text-gray-700 mb-8">
+        <div><strong>Name:</strong> <span th:text="${student.name}">Name</span></div>
+        <div><strong>Roll Number:</strong> <span th:text="${student.rollNumber}">Roll</span></div>
+        <div><strong>Email:</strong> <span th:text="${student.email}">Email</span></div>
+        <div><strong>Gender:</strong> <span th:text="${student.gender}">Gender</span></div>
+        <div><strong>DOB:</strong> <span th:text="${student.dob}">DOB</span></div>
+        <div><strong>School:</strong> <span th:text="${student.schoolName}">School</span></div>
+    </div>
+
+    <!-- Subject Marks Table -->
+    <div class="overflow-x-auto">
+        <table class="min-w-full text-sm text-left border border-gray-300 rounded-lg overflow-hidden">
+            <thead class="bg-blue-600 text-white">
+            <tr>
+                <th class="px-4 py-2">Subject</th>
+                <th class="px-4 py-2">Marks</th>
+                <th class="px-4 py-2">Max Marks</th>
+                <th class="px-4 py-2">Remark</th>
+                <th class="px-4 py-2">Answer Sheet</th>
+            </tr>
+            </thead>
+            <tbody class="bg-white divide-y divide-gray-200">
+            <tr th:each="mark : ${marks}">
+                <td class="px-4 py-2" th:text="${mark.subject}">Subject</td>
+                <td class="px-4 py-2" th:text="${mark.marks}">0</td>
+                <td class="px-4 py-2" th:text="${mark.maxMarks}">0</td>
+                <td class="px-4 py-2" th:text="${mark.remark}">-</td>
+                <td class="px-4 py-2">
+                    <a th:if="${mark.answerSheetPath != null}"
+                       th:href="@{/results/download/{id}(id=${mark.id})}"
+                       class="bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700 text-sm">
+                        📄 Download
+                    </a>
+                    <span th:if="${mark.answerSheetPath == null}" class="text-gray-400 text-sm">
+                        Not Uploaded
+                    </span>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Summary Section -->
+    <div class="mt-8 bg-gray-50 border rounded-xl p-6">
+        <div class="grid md:grid-cols-2 gap-6 text-gray-700">
+            <div><strong>Total Marks:</strong> <span th:text="${totalMarks}">0</span> / <span th:text="${totalMaxMarks}">0</span></div>
+            <div><strong>Percentage:</strong> <span th:text="${percentage}">0.00</span>%</div>
+            <div>
+                <strong>Overall Grade:</strong>
+                <span th:class="${totalGrade=='F'} ? 'text-red-700 font-bold text-4xl' : 'text-green-700 font-bold text-4xl'"
+                      th:text="${totalGrade}">F</span>
+            </div>
+            <div><strong>Feedback:</strong> Keep up the excellent work! You're doing great!</div>
+        </div>
+    </div>
+
+    <!-- Actions -->
+    <div class="mt-8 flex justify-center space-x-4">
+        <a th:href="@{'/results/input'}" class="px-3 py-1 text-white bg-blue-700 rounded">View Another Result</a>
+        <button onclick="printMarksheet()" class="px-3 py-1 text-white bg-red-700 rounded">Print</button>
+    </div>
+
+    <!-- Footer -->
+    <div class="text-center text-xs text-gray-500 mt-10">
+        © 2025 SmartResult. All rights reserved.
+    </div>
+</div>
+
+<script>
+    console.log("Student Marksheet Loaded");
+    function printMarksheet(){
+        window.print();
+    }
+</script>
+
+</body>
+</html>

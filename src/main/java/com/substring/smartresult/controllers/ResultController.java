@@ -94,15 +94,34 @@ public class ResultController {
 
             String totalGrade="F";
 
-            if (percentage > 90) {
+            if (percentage > 95) {
                 totalGrade = "A+";
-            } else if (percentage > 80 && percentage <= 90) {
+            } else if (percentage > 90) {
                 totalGrade = "A";
-            } else if (percentage > 70 && percentage <= 80) {
+            } else if (percentage > 85 && percentage <= 90) {
                 totalGrade = "B+";
-            } else if (percentage > 60 && percentage <= 70) {
+            } else if (percentage > 80 && percentage <= 85) {
                 totalGrade = "B";
-            } else {
+            }
+            else if (percentage > 75 && percentage <= 80) {
+                totalGrade = "C+";
+            }
+            else if (percentage > 70 && percentage <= 75) {
+                totalGrade = "C";
+            }
+            else if (percentage > 65 && percentage <= 70) {
+                totalGrade = "D+";
+            }
+            else if (percentage > 60 && percentage <= 65) {
+                totalGrade = "D";
+            }
+            else if (percentage > 55 && percentage <= 60) {
+                totalGrade = "E+";
+            }
+            else if (percentage > 50 && percentage <= 55) {
+                totalGrade = "E";
+            }
+            else {
                 totalGrade = "F";
             }
 
@@ -115,7 +134,6 @@ public class ResultController {
             return "result_data";
         }
     }
-
 
     @GetMapping("/download/{markId}")
     public ResponseEntity<Resource> downloadAnswerSheet(@PathVariable Long markId) {
@@ -138,5 +156,6 @@ public class ResultController {
                 .header(HttpHeaders.CONTENT_TYPE, "application/pdf")
                 .body(file);
     }
+
 
 }

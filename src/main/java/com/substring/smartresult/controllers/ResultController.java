@@ -29,7 +29,7 @@ public class ResultController {
     public String viewResult()
     {
         System.out.println("Result page");
-        return "view_Result";
+        return "view_result";
     }
 
 
@@ -65,9 +65,6 @@ public class ResultController {
     public String viewResultByRollNumber(@RequestParam ("rollNumber") String rollNumber, @RequestParam("dob")
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dob, Model model)
     {
-        System.out.println("Roll number : "+ rollNumber);
-        System.out.println("Password : "+ dob);
-
         Student student=resultService.getResultByRollNumberANDDob(rollNumber,dob);
 
         if(student==null)

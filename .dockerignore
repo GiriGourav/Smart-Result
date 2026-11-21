@@ -1,0 +1,6 @@
+.git
+target
+.env
+.env.*
+.idea
+uploads

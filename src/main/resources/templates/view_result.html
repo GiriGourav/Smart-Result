@@ -13,6 +13,10 @@
     <h2 class="text-2xl font-bold text-center text-blue-800 mb-6">View Your Result</h2>
 
     <!-- Form -->
+    <p th:if="${@environment.matchesProfiles('portfolio')}" class="mb-4 text-sm text-gray-700">
+        Try the sample result with roll number <strong>DEMO-101</strong> and date of birth
+        <strong>15 January 2005</strong>.
+    </p>
     <form th:action="@{'/results/view-result'}"  method="post" id="resultForm" class="space-y-4">
         <div>
             <label for="rollNumber" class="block text-gray-700 font-medium mb-1">Enter Roll Number</label>

@@ -13,6 +13,17 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 public class SecurityConfig {
     @Bean
+    @org.springframework.core.annotation.Order(1)
+    @org.springframework.context.annotation.Profile("portfolio")
+    public SecurityFilterChain portfolioSecurity(HttpSecurity http) throws Exception {
+        return http.authorizeHttpRequests(request -> request
+                .requestMatchers(org.springframework.http.HttpMethod.GET, "/", "/results/input", "/error").permitAll()
+                .requestMatchers(org.springframework.http.HttpMethod.POST, "/results/view-result").permitAll()
+                .anyRequest().denyAll()).build();
+    }
+
+    @Bean
+    @org.springframework.context.annotation.Profile("!portfolio")
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
 
 //        Configuration:
